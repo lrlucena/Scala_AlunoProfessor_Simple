@@ -15,6 +15,7 @@ import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 class UsuarioServiceImpl @Inject() (usuarioDAO: UsuarioDAO) extends UsuarioService {
   def retrieve(id: UUID) = usuarioDAO.find(id)
+  def retrieve(email: String) = usuarioDAO.find(email)
   def retrieve(loginInfo: LoginInfo): Future[Option[Usuario]] =
     usuarioDAO.find(loginInfo)
   def save(usuario: Usuario) = usuarioDAO.save(usuario)
